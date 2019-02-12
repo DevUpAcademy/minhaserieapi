@@ -12,7 +12,11 @@ class SerieController {
 		};
 
 		let resultCount = 0;
-		let results = [];
+		let body = {
+			results: [],
+			count: '',
+		}
+		
 		rp(options)
 			.then(($) => {
 				$('.list-generic li.vertical').each(function(i, el) {
@@ -26,9 +30,10 @@ class SerieController {
 						"img": $(this).find('.f16 img').attr('src'),
 						"rate": $(this).find('div.rate-info').text().trim()
 					}
-					results.push(serie)
+					body.results.push(serie)
 				})
-				res.json(results)
+				body.count = resultCount;
+				res.json(body)
 			})
 			.catch(function (err) {
 				console.log(err)
