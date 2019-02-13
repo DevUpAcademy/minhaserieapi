@@ -23,6 +23,7 @@ class SerieController {
 						"title": `${title}`,
 						"category": $(this).find('a.f16').text().trim().replace(title, "").replace(/(\r\n|\n|\r)/gm, ""),
 						"thumb": $(this).find('.f16 img').attr('src'),
+						"link": `https://www.minhaserie.com.br${$(this).find('.searchCard a.f16').attr('href')}`,
 						"stars": $(this).find('.ratingbox').css('width').replace("%", "") / 20,
 						"stars-width": $(this).find('.ratingbox').css('width'),
 						"visits": $(this).find('div.rate-info').text().replace("visitas", "").trim()
@@ -58,6 +59,7 @@ class SerieController {
 						"title": `${$(this).find('.front h2.info-title').text().trim()}`,
 						"category": `${$(this).find('.front span.cat').text().trim()}`,
 						"thumb": `${$(this).find('.front span.image.w190 img').attr('src')}`,
+						"link": `https://www.minhaserie.com.br${$(this).find('.back a').attr('href')}`,
 						"stars": `${$(this).find('.front .rate .ratingbox').css('width').replace("%", "")}`,
 						"stars-width": `${$(this).find('.front .rate .ratingbox').css('width')}`,
 						"visits": `${$(this).find('.front .rate .rate-info').text().replace("visitas", "").trim()}`,
