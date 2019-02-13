@@ -1,6 +1,6 @@
 # Minha Serie | API
 
-[![N|DevUpAcademy](https://raw.githubusercontent.com/jhonatadev/devup/master/img/dev-logo.png?token=ANqoRHHZ04HJQiPFhllvSkV4DecEu8nLks5cZCkzwA%3D%3D)](https://github.com/devupacademy)
+[![N|DevUpAcademy](https://raw.githubusercontent.com/DevUpAcademy/minhaserieapi/master/src/img/devup.png)](https://github.com/devupacademy)
 
 Está é uma API não oficial, desenvolvida para testes com extração de series resultantes do [Minha Series](https://www.minhaserie.com.br "Site de Series").
 
