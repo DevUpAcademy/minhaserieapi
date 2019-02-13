@@ -16,7 +16,7 @@ $ npm start
 ```
 Acesse então no navegador por exemplo:
 ```sh
-localhost:3000/serie/vikings
+localhost:3000/serie/robot
 ```
 Retornará como resultado:
 
