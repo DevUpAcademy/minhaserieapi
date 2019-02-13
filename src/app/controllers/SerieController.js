@@ -3,7 +3,7 @@ const rp = require('request-promise')
 const cheerio = require('cheerio')
 
 class SerieController {
-	show (req, res) {
+	search (req, res) {
 		let options = {
 		    uri: `https://www.minhaserie.com.br/busca/series?term=${req.params.term}`,
 		    transform: function (body) {
