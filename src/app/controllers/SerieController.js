@@ -34,9 +34,47 @@ class SerieController {
 			})
 			.catch(function (err) {
 				console.log(err)
-				res.json(`"error": ${err}`)
+				let response = {
+					"error": `${err.statusCode}`
+				}
+				res.json(response);
 			})
-		//res.json(req.params)
+	}
+	top (req, res) {
+		let options = st.setURI(`https://www.minhaserie.com.br/series`)
+
+		rp(options)
+			.then(($) => {
+				let resultCount=0;
+				let body = {
+					results: [],
+					count: '',
+				}
+				$('.tv-list .vertical').each(function(i, el) {
+
+					resultCount++;
+
+					let serie = {
+						"title": `${$(this).find('.front h2.info-title').text().trim()}`,
+						"category": `${$(this).find('.front span.cat').text().trim()}`,
+						"thumb": `${$(this).find('.front span.image.w190 img').attr('src')}`,
+						"stars": `${$(this).find('.front .rate .ratingbox').css('width').replace("%", "")}`,
+						"stars-width": `${$(this).find('.front .rate .ratingbox').css('width')}`,
+						"visits": `${$(this).find('.front .rate .rate-info').text().replace("visitas", "").trim()}`,
+						"description": `${$(this).find('.back p').text().trim()}`,
+					}
+					body.results.push(serie);
+				})
+				body.count = resultCount;
+				res.json(body)
+			})
+			.catch(function (err) {
+				console.log(err)
+				let response = {
+					"error": `${err.statusCode}`
+				}
+				res.json(response);
+			})
 	}
 }
 
