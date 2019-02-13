@@ -29,6 +29,7 @@ class SerieController {
 						"category": $(this).find('a.f16').text().trim().replace(title, "").replace(/(\r\n|\n|\r)/gm, ""),
 						"thumb": $(this).find('.f16 img').attr('src'),
 						"stars": $(this).find('.ratingbox').css('width').replace("%", "") / 20,
+						"stars-width": $(this).find('.ratingbox').css('width'),
 						"visits": $(this).find('div.rate-info').text().replace("visitas", "").trim()
 					}
 					body.results.push(serie)
