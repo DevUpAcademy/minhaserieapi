@@ -2,9 +2,10 @@
   "name": "minhaserieapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node .",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
