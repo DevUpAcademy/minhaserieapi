@@ -1,15 +1,10 @@
 const request = require('request')
 const rp = require('request-promise')
-const cheerio = require('cheerio')
+const st = require('../tools/ScrapperTool')
 
 class SerieController {
 	search (req, res) {
-		let options = {
-		    uri: `https://www.minhaserie.com.br/busca/series?term=${req.params.term}`,
-		    transform: function (body) {
-		        return cheerio.load(body);
-		    }
-		};
+		let options = st.setURI(`https://www.minhaserie.com.br/busca/series?term=${req.params.term}`)
 
 		let resultCount = 0;
 		let body = {
