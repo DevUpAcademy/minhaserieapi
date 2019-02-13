@@ -26,7 +26,7 @@ class SerieController {
 
 					let serie = {
 						"title": `${title}`,
-						"category": $(this).find('a.f16').text().trim().replace(/(\r\n|\n|\r)/gm, ""),
+						"category": $(this).find('a.f16').text().trim().replace(title, "").replace(/(\r\n|\n|\r)/gm, ""),
 						"thumb": $(this).find('.f16 img').attr('src'),
 						"visits": $(this).find('div.rate-info').text().replace("visitas", "").trim()
 					}
