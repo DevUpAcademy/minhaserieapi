@@ -23,6 +23,7 @@ class SerieController {
 						"title": `${title}`,
 						"category": $(this).find('a.f16').text().trim().replace(title, "").replace(/(\r\n|\n|\r)/gm, ""),
 						"thumb": $(this).find('.f16 img').attr('src'),
+						"name": `${$(this).find('.searchCard a.f16').attr('href').replace('/serie/', '')}`,
 						"link": `https://www.minhaserie.com.br${$(this).find('.searchCard a.f16').attr('href')}`,
 						"stars": $(this).find('.ratingbox').css('width').replace("%", "") / 20,
 						"stars-width": $(this).find('.ratingbox').css('width'),
@@ -60,6 +61,7 @@ class SerieController {
 						"category": `${$(this).find('.front span.cat').text().trim()}`,
 						"rank": $(this).find('.front .info-rate span').text().trim(),
 						"thumb": `${$(this).find('.front span.image.w190 img').attr('src')}`,
+						"name": `${$(this).find('.back a').attr('href').replace('/serie/', '')}`,
 						"link": `https://www.minhaserie.com.br${$(this).find('.back a').attr('href')}`,
 						"stars": `${$(this).find('.front .rate .ratingbox').css('width').replace("%", "")}`,
 						"stars-width": `${$(this).find('.front .rate .ratingbox').css('width')}`,
@@ -69,6 +71,36 @@ class SerieController {
 					body.results.push(serie);
 				})
 				body.count = resultCount;
+				res.json(body)
+			})
+			.catch(function (err) {
+				console.log(err)
+				let response = {
+					"error": `${err.statusCode}`
+				}
+				res.json(response);
+			})
+	}
+	show (req, res) {
+		let options = st.setURI(`https://www.minhaserie.com.br/serie/${req.params.name}`)
+
+		rp(options)
+			.then(($) => {
+				let info = $('.subheader .tv-info ul li span.value')
+				let statistics = $('.show-stats ul li span.stat-value')
+
+				let body = {
+					"title": $('.subtitle h1').text().trim(),
+					"title-pt": $('.subtitle h2').text().trim(),
+					"thumb": $('.subheader .tv-bar img').attr('src'),
+					"category": $(info[0]).text().trim(),
+					"status": $(info[1]).text().trim(),
+					"debut": $(info[2]).text().trim(),
+					"rank": $(statistics[0]).text().trim(),
+					"visits": $(statistics[1]).text().trim(),
+					"description": $('.description p').text().trim(),
+				}
+
 				res.json(body)
 			})
 			.catch(function (err) {
