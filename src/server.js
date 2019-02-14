@@ -8,7 +8,11 @@ class App {
 		this.express = express()
 
 		this.engine()
+		this.start()
 		this.routes()
+	}
+
+	start () {
 		this.express.use(cors())
 	}
 
@@ -20,6 +24,11 @@ class App {
 
 	routes () {
 		this.express.use(require('./routes'))
+		this.express.use(function(req, res, next) {
+			res.header("Access-Control-Allow-Origin", "*");
+			res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+			next();
+		});
 	}
 }
 
