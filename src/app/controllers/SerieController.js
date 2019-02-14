@@ -58,6 +58,7 @@ class SerieController {
 					let serie = {
 						"title": `${$(this).find('.front h2.info-title').text().trim()}`,
 						"category": `${$(this).find('.front span.cat').text().trim()}`,
+						"rank": $(this).find('.front .info-rate span').text().trim(),
 						"thumb": `${$(this).find('.front span.image.w190 img').attr('src')}`,
 						"link": `https://www.minhaserie.com.br${$(this).find('.back a').attr('href')}`,
 						"stars": `${$(this).find('.front .rate .ratingbox').css('width').replace("%", "")}`,
