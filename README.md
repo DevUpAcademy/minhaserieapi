@@ -41,6 +41,10 @@ Retornará como resultado:
 
 Estas são as rotas da API
 
-|  | Link |
-| ------ | ------ |
-| Search Serie | [INFO](/) |
+* Listar Top Series (15) > **_/series_**:
+    * GET https://minhaserieapi.herokuapp.com/series
+* Pesquisar por serie > **_/search/:name_**
+	* GET https://minhaserieapi.herokuapp.com/search/vikings
+* Ver mais informações da serie > **_/serie/:name_in_site_**
+	* GET https://minhaserieapi.herokuapp.com/serie/740-vikings
+		* *_name_in_site_* pode ser encontrado como retorno de /search/:name como **name**
