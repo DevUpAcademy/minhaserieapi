@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 const remarkable = require('express-remarkable')
 
 class App {
@@ -8,6 +9,7 @@ class App {
 
 		this.engine()
 		this.routes()
+		this.express.use(cors())
 	}
 
 	engine () {
