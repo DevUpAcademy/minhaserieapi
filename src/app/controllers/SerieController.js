@@ -88,11 +88,13 @@ class SerieController {
 			.then(($) => {
 				let info = $('.subheader .tv-info ul li span.value')
 				let statistics = $('.show-stats ul li span.stat-value')
+				const url = `https://www.minhaserie.com.br/serie/${req.originalUrl}`
 
 				let body = {
 					"title": $('.subtitle h1').text().trim(),
 					"title-pt": $('.subtitle h2').text().trim(),
 					"thumb": $('.subheader .tv-bar img').attr('src'),
+					"link": url,
 					"category": $(info[0]).text().trim(),
 					"status": $(info[1]).text().trim(),
 					"debut": $(info[2]).text().trim(),
