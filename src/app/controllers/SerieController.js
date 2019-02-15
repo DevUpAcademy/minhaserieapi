@@ -63,7 +63,7 @@ class SerieController {
 						"thumb": `${$(this).find('.front span.image.w190 img').attr('src')}`,
 						"name": `${$(this).find('.back a').attr('href').replace('/serie/', '')}`,
 						"link": `https://www.minhaserie.com.br${$(this).find('.back a').attr('href')}`,
-						"stars": `${$(this).find('.front .rate .ratingbox').css('width').replace("%", "")}`,
+						"stars": $(this).find('.front .rate .ratingbox').css('width').replace("%", "") / 20,
 						"stars-width": `${$(this).find('.front .rate .ratingbox').css('width')}`,
 						"visits": `${$(this).find('.front .rate .rate-info').text().replace("visitas", "").trim()}`,
 						"description": `${$(this).find('.back p').text().trim()}`,
