@@ -12,28 +12,38 @@ Clone o repo, instale as dependencias e inicie o server.
 $ git clone https://github.com/DevUpAcademy/minhaserieapi.git
 $ cd minhaserieapi
 $ npm install
-$ npm start
+$ npm run dev
 ```
 Acesse então no navegador por exemplo:
 ```sh
-localhost:3000/serie/robot
+localhost:3000/search/vikings
 ```
 Retornará como resultado:
 
 ```json
-	{
-	"results": [
-	{
-		"title": "Mr. Robot",
-		"category": "Drama",
-		"thumb": "https://assets2.minhaserie.com.br/images/highlights/000/022/668/thumb_1067.jpg",
-		"stars": 5,
-		"stars-width": "100%",
-		"visits": "100105"
-		}
-	],
-	"count": 1
-	}
+"results": [
+    {
+      "title": "Vikings",
+      "category": "Ação/Aventura",
+      "thumb": "https://assets2.minhaserie.com.br/images/highlights/000/017/148/thumb_740.jpg",
+      "name": "740-vikings",
+      "link": "https://www.minhaserie.com.br/serie/740-vikings",
+      "stars": 5,
+      "stars-width": "100%",
+      "visits": "402810"
+    },
+    {
+      "title": "The Last Kingdom",
+      "category": "Ação/Aventura, Drama",
+      "thumb": "https://assets3.minhaserie.com.br/images/highlights/000/024/564/thumb_1156.jpg",
+      "name": "1156-the-last-kingdom",
+      "link": "https://www.minhaserie.com.br/serie/1156-the-last-kingdom",
+      "stars": 5,
+      "stars-width": "100%",
+      "visits": "25355"
+    }
+  ],
+"count": 2
 ```
 
 
