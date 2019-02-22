@@ -87,6 +87,8 @@ class SerieController {
 					"title-pt": $('.subtitle h2').text().trim(),
 					"thumb": $('.subheader .tv-bar img').attr('src'),
 					"link": url,
+					"stars": $('.ratingbox').css('width').replace("%", "") / 20,
+					"stars-width": $('.ratingbox').css('width'),
 					"category": $(info[0]).text().trim(),
 					"status": $(info[1]).text().trim(),
 					"debut": $(info[2]).text().trim(),
