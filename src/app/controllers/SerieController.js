@@ -34,12 +34,8 @@ class SerieController {
 				body.count = resultCount;
 				res.json(body)
 			})
-			.catch(function (err) {
-				console.log(err)
-				let response = {
-					"error": `${err.statusCode}`
-				}
-				res.json(response);
+			.catch(err => {
+				return res.status(400).send({ error: 'Erro na busca da serie'})
 			})
 	}
 	top (req, res) {
@@ -73,12 +69,8 @@ class SerieController {
 				body.count = resultCount;
 				res.json(body)
 			})
-			.catch(function (err) {
-				console.log(err)
-				let response = {
-					"error": `${err.statusCode}`
-				}
-				res.json(response);
+			.catch(err => {
+				return res.status(400).send({ error: 'Erro na busca de top series'})
 			})
 	}
 	show (req, res) {
@@ -106,11 +98,7 @@ class SerieController {
 				res.json(body)
 			})
 			.catch(function (err) {
-				console.log(err)
-				let response = {
-					"error": `${err.statusCode}`
-				}
-				res.json(response);
+				return res.status(400).send({ error: 'Erro na busca de informações da serie.'})
 			})
 	}
 }
