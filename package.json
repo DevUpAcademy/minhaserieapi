@@ -16,7 +16,6 @@
     "express": "^4.16.4",
     "express-async-handler": "^1.1.4",
     "express-remarkable": "^1.0.0",
-    "opn": "^5.4.0",
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
