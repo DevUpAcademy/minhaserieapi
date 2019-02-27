@@ -50,6 +50,7 @@ class SerieController {
 				let body = {
 					results: [],
 					count: '',
+					pages: Number(`${$('.pagination .last a').attr('href').replace('/series?page=', '')}`)
 				}
 				$('.tv-list .vertical').each(function (i, el) {
 
