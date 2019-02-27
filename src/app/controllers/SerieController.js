@@ -11,14 +11,22 @@ class SerieController {
 			: ''}term=${req.params.term}`
 		)
 
-		let resultCount = 0;
-		let body = {
-			results: [],
-			count: '',
-		}
-
 		rp(options)
 			.then(($) => {
+
+			//let urlLastPage = new URL(`${urlMS}${$('.pagination .last a').attr('href')}`)
+			//let pages = urlLastPage.searchParams.get('page')
+			let pages = $('.pagination .last a').attr('href').match('\A?page=[^&]*')
+				.toString().replace('page=', '')
+
+			let resultCount = 0;
+			let body = {
+				results: [],
+				count: '',
+				page: Number($('.pagination span.current').text().trim()),
+				pages: Number(pages)
+			}
+
 				$('.list-generic li.vertical').each(function (i, el) {
 					resultCount++;
 
