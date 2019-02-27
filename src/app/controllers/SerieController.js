@@ -13,18 +13,15 @@ class SerieController {
 
 		rp(options)
 			.then(($) => {
-
-			//let urlLastPage = new URL(`${urlMS}${$('.pagination .last a').attr('href')}`)
-			//let pages = urlLastPage.searchParams.get('page')
-			let pages = $('.pagination .last a').attr('href').match('\A?page=[^&]*')
-				.toString().replace('page=', '')
+				
+			let pages = String($('.pagination .last a').attr('href')).match('\A?page=[^&]*') || 1
 
 			let resultCount = 0;
 			let body = {
 				results: [],
 				count: '',
-				page: Number($('.pagination span.current').text().trim()),
-				pages: Number(pages)
+				page: Number($('.pagination span.current').text().trim()) || 1,
+				pages: Number(pages.toString().replace('page=', ''))
 			}
 
 				$('.list-generic li.vertical').each(function (i, el) {
