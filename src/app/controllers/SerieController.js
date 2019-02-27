@@ -3,7 +3,7 @@ const rp = require('request-promise')
 const st = require('../tools/ScrapperTool')
 
 class SerieController {
-	search (req, res) {
+	search(req, res) {
 		let options = st.setURI(`https://www.minhaserie.com.br/busca/series?term=${req.params.term}`)
 
 		let resultCount = 0;
@@ -11,12 +11,12 @@ class SerieController {
 			results: [],
 			count: '',
 		}
-		
+
 		rp(options)
 			.then(($) => {
-				$('.list-generic li.vertical').each(function(i, el) {
+				$('.list-generic li.vertical').each(function (i, el) {
 					resultCount++;
-					
+
 					let title = titleSlice($(this).find('a.f16').text());
 
 					let serie = {
@@ -35,20 +35,22 @@ class SerieController {
 				res.json(body)
 			})
 			.catch(err => {
-				return res.status(400).send({ error: 'Erro na busca da serie'})
+				return res.status(400).send({
+					error: 'Erro na busca da serie'
+				})
 			})
 	}
-	top (req, res) {
+	top(req, res) {
 		let options = st.setURI(`https://www.minhaserie.com.br/series`)
 
 		rp(options)
 			.then(($) => {
-				let resultCount=0;
+				let resultCount = 0;
 				let body = {
 					results: [],
 					count: '',
 				}
-				$('.tv-list .vertical').each(function(i, el) {
+				$('.tv-list .vertical').each(function (i, el) {
 
 					resultCount++;
 
@@ -70,17 +72,27 @@ class SerieController {
 				res.json(body)
 			})
 			.catch(err => {
-				return res.status(400).send({ error: 'Erro na busca de top series'})
+				return res.status(400).send({
+					error: 'Erro na busca de top series'
+				})
 			})
 	}
-	show (req, res) {
+	show(req, res) {
 		let options = st.setURI(`https://www.minhaserie.com.br/serie/${req.params.name}`)
 
 		rp(options)
 			.then(($) => {
+				const url = `https://www.minhaserie.com.br${req.originalUrl}`
 				let info = $('.subheader .tv-info ul li span.value')
 				let statistics = $('.show-stats ul li span.stat-value')
-				const url = `https://www.minhaserie.com.br${req.originalUrl}`
+				let news = []
+				$('.update-list li.vertical').each(function (i, el) {
+					let serieNew = {
+						'thumb': `${$(this).find('img').attr('src')}`,
+						'description': `${$(this).find('h2.title').text().trim()}`
+					}
+					news.push(serieNew)
+				})
 
 				let body = {
 					"title": $('.subtitle h1').text().trim(),
@@ -95,12 +107,15 @@ class SerieController {
 					"rank": $(statistics[0]).text().trim(),
 					"visits": $(statistics[1]).text().trim(),
 					"description": $('.description p').text().trim(),
+					"news": news
 				}
 
 				res.json(body)
 			})
 			.catch(function (err) {
-				return res.status(400).send({ error: 'Erro na busca de informações da serie.'})
+				return res.status(400).send({
+					error: 'Erro na busca de informações da serie.'
+				})
 			})
 	}
 }
