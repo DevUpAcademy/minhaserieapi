@@ -1,6 +1,7 @@
 const request = require('request')
 const rp = require('request-promise')
 const st = require('../tools/ScrapperTool')
+const urlMS = 'https://www.minhaserie.com.br'
 
 class SerieController {
 	search(req, res) {
@@ -86,10 +87,11 @@ class SerieController {
 				let info = $('.subheader .tv-info ul li span.value')
 				let statistics = $('.show-stats ul li span.stat-value')
 				let news = []
-				$('.update-list li.vertical').each(function (i, el) {
+				$('.update-list li.lw190.vertical').each(function (i, el) {
 					let serieNew = {
-						'thumb': `${$(this).find('img').attr('src')}`,
-						'description': `${$(this).find('h2.title').text().trim()}`
+						"thumb": `${$(this).find('img').attr('src')}`,
+						"link": `${urlMS+$(this).find('a.f16').attr('href')}`,
+						"description": `${$(this).find('h2.title').text().trim()}`
 					}
 					news.push(serieNew)
 				})
