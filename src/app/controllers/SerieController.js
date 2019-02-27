@@ -42,7 +42,7 @@ class SerieController {
 			})
 	}
 	top(req, res) {
-		let options = st.setURI(`https://www.minhaserie.com.br/series`)
+		let options = st.setURI(`https://www.minhaserie.com.br/series${req.query.page ? `?page=${req.query.page}` : ''}`)
 
 		rp(options)
 			.then(($) => {
