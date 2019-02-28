@@ -2,7 +2,7 @@
 
 [![N|DevUpAcademy](https://raw.githubusercontent.com/DevUpAcademy/minhaserieapi/master/src/img/devup.png)](https://github.com/devupacademy)
 
-Está é uma API não oficial, desenvolvida para testes de extração de series resultantes do [Minha Series](https://www.minhaserie.com.br "Site de Series").
+> Está é uma API não oficial, desenvolvida para testes de extração de series resultantes do [Minha Series](https://www.minhaserie.com.br "Site de Series").
 
 ### Instalação
 
@@ -58,3 +58,5 @@ Estas são as rotas da API
 * Ver mais informações da serie > **_/serie/:name_in_site_**
 	* GET https://minhaserieapi.herokuapp.com/serie/740-vikings
 		* *_name_in_site_* pode ser encontrado como retorno de /search/:name como **name**
+* Listar Novidades > **_/news_**:
+    * GET https://minhaserieapi.herokuapp.com/news
