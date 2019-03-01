@@ -4,14 +4,15 @@ const urlMS = 'https://www.minhaserie.com.br'
 
 class NewController {
 	index(req, res) {
-		let options = st.setURI(`${urlMS}/novidades?page=1`)
+		let options = st.setURI(`${urlMS}/novidades?page=${req.query.page ? req.query.page : 1}`)
 
 		rp(options)
 			.then(($) => {
 				let resultCount = 0;
 				let body = {
 					results: [],
-					count: ''
+					count: '',
+					page: Number($('.pagination span.current').text().trim()) || 1
 				}
 
 				$('.update-list li.horizontal').each(function (i, el) {
