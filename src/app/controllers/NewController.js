@@ -19,10 +19,15 @@ class NewController {
 				$('.update-list li.horizontal').each(function (i, el) {
 					resultCount++;
 
+					let author = $(this).find('.info-list .info-post em').text().trim()
 					let noticia = {
 						"title": $(this).find('h2.info-title').text().trim(),
 						"thumb": $(this).find('.image img').attr('src'),
-						"author": $(this).find('.info-list .info-post em').text().trim()
+						"author": author,
+						"published": $(this).find('.info-list .info-post').text()
+							.replace(/(\r\n|\n|\r)/gm, ' ')
+							.replace(/\s+/g, ' ')
+							.replace('Por ' + author, '').trim()
 					}
 					body.results.push(noticia)
 				})
