@@ -12,7 +12,8 @@ class NewController {
 				let body = {
 					results: [],
 					count: '',
-					page: Number($('.pagination span.current').text().trim()) || 1
+					page: Number($('.pagination span.current').text().trim()) || 1,
+					pages: Number($('.pagination .last a').attr('href').replace('/novidades?page=', ''))
 				}
 
 				$('.update-list li.horizontal').each(function (i, el) {
