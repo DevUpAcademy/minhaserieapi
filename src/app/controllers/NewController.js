@@ -27,7 +27,8 @@ class NewController {
 						"published": $(this).find('.info-list .info-post').text()
 							.replace(/(\r\n|\n|\r)/gm, ' ')
 							.replace(/\s+/g, ' ')
-							.replace('Por ' + author, '').trim()
+							.replace('Por ' + author, '').trim(),
+						"link": urlMS + $(this).find('a.f18').attr('href')
 					}
 					body.results.push(noticia)
 				})
