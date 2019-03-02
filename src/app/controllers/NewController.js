@@ -23,6 +23,7 @@ class NewController {
 					let noticia = {
 						"title": $(this).find('h2.info-title').text().trim(),
 						"thumb": $(this).find('.image img').attr('src'),
+						"name": String($(this).find('a.f18').attr('href')).replace('/novidades/', ''),
 						"author": author,
 						"published": $(this).find('.info-list .info-post').text()
 							.replace(/(\r\n|\n|\r)/gm, ' ')
