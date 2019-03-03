@@ -39,7 +39,27 @@ class NewController {
 			})
 			.catch(err => {
 				return res.status(400).send({
-					error: 'Erro na busca da serie'
+					error: 'Erro na busca das noticias'
+				})
+			})
+	}
+
+	show(req, res) {
+		let options = st.setURI(urlMS + `/novidades/${req.params.name}`)
+
+		rp(options)
+			.then(($) => {
+				let body = {
+					"title": $('.article-header-title').text().trim(),
+					"published": $('.date-published').text().trim(),
+					"content": $('.article-text').html()
+				}
+
+				res.json(body)
+			})
+			.catch(err => {
+				return res.status(400).send({
+					error: 'Erro na busca da noticia'
 				})
 			})
 	}
