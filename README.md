@@ -59,4 +59,6 @@ Estas são as rotas da API
 	* GET https://minhaserieapi.herokuapp.com/serie/740-vikings
 		* *_name_in_site_* pode ser encontrado como retorno de /search/:name como **name**
 * Listar Novidades > **_/news_**:
-    * GET https://minhaserieapi.herokuapp.com/news
+	* GET https://minhaserieapi.herokuapp.com/news
+* Ver mais informações da noticia > **_/new/:name_**
+	* GET https://minhaserieapi.herokuapp.com/new/46192-luke-perry-de-riverdale-e-barrados-no-baile-morre-aos-52-anos
