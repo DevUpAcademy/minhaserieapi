@@ -29,6 +29,7 @@ class NewController {
 							.replace(/(\r\n|\n|\r)/gm, ' ')
 							.replace(/\s+/g, ' ')
 							.replace('Por ' + author, '').trim(),
+						"comments": Number($(this).find('.info-comm span.newsitem_comments').text().trim()),
 						"link": urlMS + $(this).find('a.f18').attr('href')
 					}
 					body.results.push(noticia)
