@@ -32,7 +32,7 @@ class SerieController {
 					let serie = {
 						"title": `${title}`,
 						"category": $(this).find('a.f16').text().trim().replace(title, "").replace(/(\r\n|\n|\r)/gm, ""),
-						"thumb": $(this).find('.f16 img').attr('src'),
+						"thumb": $(this).find('.f16 img').attr('data-src'),
 						"name": `${$(this).find('.searchCard a.f16').attr('href').replace('/serie/', '')}`,
 						"link": `https://www.minhaserie.com.br${$(this).find('.searchCard a.f16').attr('href')}`,
 						"stars": $(this).find('.ratingbox').css('width').replace("%", "") / 20,
