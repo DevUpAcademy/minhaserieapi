@@ -119,6 +119,8 @@ class SerieController {
 					"title": $('.tv-info h1.heading-normal').text().trim(),
 					"title-pt": $('.tv-info h2.subtitle-grey').text().trim(),
 					"thumb": $('.subheader .tv-bar img').attr('data-src'),
+                    "seasons": $(info[5]).text().trim(),
+                    "episodes": $(info[6]).text().trim(),
 					"link": url,
 					"debut": $(info[0]).text().trim(),
 					"status": $(info[1]).text().trim(),
