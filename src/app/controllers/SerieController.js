@@ -93,33 +93,38 @@ class SerieController {
 		let options = st.setURI(`https://www.minhaserie.com.br/serie/${req.params.name}`)
 
 		rp(options)
-			.then(($) => {
+			.then(async ($) => {
 				const url = `https://www.minhaserie.com.br${req.originalUrl}`
-				let info = $('.subheader .tv-info ul li span.value')
-				let statistics = $('.show-stats ul li span.stat-value')
+				let info = $('.serie-about ul li span.value')
 				let news = []
-				$('.update-list li.lw190.vertical').each(function (i, el) {
+				let themes = []
+
+				$('.update-list li.horizontal').each(function (i, el) {
 					let serieNew = {
-						"thumb": `${$(this).find('img').attr('src')}`,
-						"link": `${urlMS+$(this).find('a.f16').attr('href')}`,
-						"description": `${$(this).find('h2.title').text().trim()}`
+						"thumb": $(this).find('img').attr('data-src'),
+						"link": urlMS+$(this).find('a').first().attr('href'),
+						"description": $(this).find('h3.info-title').text().trim()
 					}
 					news.push(serieNew)
 				})
 
+				$('.theme-card ul li a').each(function () {
+					themes.push({
+                        "title": $(this).text().trim(),
+                        "link": urlMS+$(this).attr('href')
+                    })
+				})
+
 				let body = {
-					"title": $('.subtitle h1').text().trim(),
-					"title-pt": $('.subtitle h2').text().trim(),
-					"thumb": $('.subheader .tv-bar img').attr('src'),
+					"title": $('.tv-info h1.heading-normal').text().trim(),
+					"title-pt": $('.tv-info h2.subtitle-grey').text().trim(),
+					"thumb": $('.subheader .tv-bar img').attr('data-src'),
 					"link": url,
-					"stars": $('.ratingbox').css('width').replace("%", "") / 20,
-					"stars-width": $('.ratingbox').css('width'),
-					"category": $(info[0]).text().trim(),
+					"debut": $(info[0]).text().trim(),
 					"status": $(info[1]).text().trim(),
-					"debut": $(info[2]).text().trim(),
-					"rank": $(statistics[0]).text().trim(),
-					"visits": $(statistics[1]).text().trim(),
-					"description": $('.description p').text().trim(),
+					"category": $(info[2]).text().trim(),
+					"description": $('.description div p').text().trim(),
+					"themes": themes,
 					"news": news
 				}
 
