@@ -13,7 +13,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-async-handler": "^1.1.4",
     "express-remarkable": "^1.0.0",
     "pug": "^2.0.3",
